@@ -1,11 +1,13 @@
 import type {Metadata} from "next";
-import {Roboto} from "next/font/google";
+import {Poppins} from "next/font/google";
 import "./globals.css";
+import {PDFProvider} from "@/modules/Converter/components/PDFContext";
+import {Header} from "@/components/Header";
 
 
-const roboto = Roboto({
-	variable: "--font-roboto",
-	subsets: ["cyrillic"],
+const poppins = Poppins({
+	variable: "--font-poppins",
+	subsets: ["latin"],
 	weight: ['100', '300', '400', '500', '700', '900']
 })
 
@@ -13,6 +15,7 @@ export const metadata: Metadata = {
 	title: "PDF Converter",
 	description: "Convert text to PDF documents",
 };
+
 
 export default function RootLayout(
 	{
@@ -23,9 +26,12 @@ export default function RootLayout(
 	return (
 		<html lang="en">
 		<body
-			className={`${roboto.variable} font-sans relative`}
+			className={`${poppins.variable} font-sans relative`}
 		>
-			{children}
+		<PDFProvider>
+			<Header/>
+			<main className="container py-8">{children}</main>
+		</PDFProvider>
 		</body>
 		</html>
 	);

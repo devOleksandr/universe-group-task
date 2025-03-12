@@ -1,5 +1,13 @@
+import {ConverterForm, Preview} from "@/modules/Converter";
+
 export default function Home() {
+
 	return (
-		<h1>Home Page</h1>
+		<div className="flex gap-6">
+			<ConverterForm/>
+			<div className="w-full">
+				<Preview/>
+			</div>
+		</div>
 	);
 }
